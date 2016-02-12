@@ -92,9 +92,6 @@ NeoBundle 'surround.vim'
 " 補完
 NeoBundle "Shougo/neocomplete.vim"
 
-" cssのカラーコードを背景色として表示
-Neobundle 'lilydjwg/colorizer'
-
 " 各言語のlintでシンタックスチェック
 NeoBundle 'scrooloose/syntastic'
 
