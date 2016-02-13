@@ -24,6 +24,7 @@ set visualbell t_vb=
 set nowrapscan
 set columns=100
 set lines=48
+set cursorline
 "----------------------------
 "要らないファイル
 "----------------------------
