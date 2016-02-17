@@ -24,7 +24,8 @@ set visualbell t_vb=
 set nowrapscan
 set columns=100
 set lines=48
-set cursorline
+"set cursorline
+set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 "----------------------------
 "要らないファイル
 "----------------------------
@@ -42,8 +43,6 @@ set undodir=~/.vim/tmp
 "----------------------------
 set t_Co=256
 colorscheme summerfruit256
-"let g:molokai_original=1
-"set background=light
 
 "-------------------------
 "NERDTreeToggleのショートカット変更
@@ -119,4 +118,3 @@ NeoBundleCheck
 "vim-indent-guides 自動起動
 "------------------------
 let g:indent_guides_enable_on_vim_startup = 1
-
