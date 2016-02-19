@@ -19,6 +19,8 @@ set list
 set listchars=tab:>-,trail:Ω
 set wrapscan
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+set scrolloff=3
+set hlsearch
 "----------------------------
 "要らないファイル
 "----------------------------
@@ -39,6 +41,8 @@ colorscheme summerfruit256
 "NERDTreeToggleのショートカット変更
 "-------------------------
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
+nnoremap <C-n> gt
+nnoremap <C-p> gT
 
 "------------------------
 "vim-indent-guides 自動起動
