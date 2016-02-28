@@ -233,6 +233,10 @@ NeoBundle 'scrooloose/syntastic'
 " コメントアウトをトグルできる
 NeoBundle 'tyru/caw.vim'
 
+" ruby・rails系
+" vim-surroundの機能を拡張 erb形式のタグを使える
+NeoBundle 'tpope/vim-rails'
+
 call neobundle#end()
 
 " Required:
