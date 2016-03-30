@@ -21,6 +21,19 @@ set wrapscan
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 set scrolloff=3
 set hlsearch
+"---------------------------
+"インサートモードキーマップ
+"---------------------------
+"insert mode時，c-aで行頭に移動
+imap <c-a> <home>
+"insert mode時，c-dでDelete
+imap <c-d> <del>
+"insert mode時，c-kでkill(カーソルから行末まで削除し，クリップボードに貼る)
+imap <c-k> <esc>lc$
+"insert mode時，c-fでカーソルを右に移動させる
+imap <c-f> <right>
+"insert mode時，c-bでカーソルを左に移動させる
+imap <c-b> <left>
 "----------------------------
 "要らないファイル
 "----------------------------
