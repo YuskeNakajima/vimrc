@@ -22,6 +22,10 @@ set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 set scrolloff=3
 set hlsearch
 "---------------------------
+" markdown
+"---------------------------
+au BufRead,BufNewFile *.md set filetype=markdown
+"---------------------------
 "インサートモードキーマップ
 "---------------------------
 "insert mode時，c-aで行頭に移動
@@ -34,6 +38,26 @@ imap <c-k> <esc>lc$
 imap <c-f> <right>
 "insert mode時，c-bでカーソルを左に移動させる
 imap <c-b> <left>
+"---------------------------
+"コマンドラインモードキーマップ
+"---------------------------
+cnoremap <C-a> <Home>
+" 一文字戻る
+cnoremap <C-b> <Left>
+" カーソルの下の文字を削除
+cnoremap <C-d> <Del>
+" 行末へ移動
+cnoremap <C-e> <End>
+" 一文字進む
+cnoremap <C-f> <Right>
+" コマンドライン履歴を一つ進む
+cnoremap <C-n> <Down>
+" コマンドライン履歴を一つ戻る
+cnoremap <C-p> <Up>
+" 前の単語へ移動
+cnoremap <M-b> <S-Left>
+" 次の単語へ移動
+cnoremap <M-f> <S-Right>
 "----------------------------
 "要らないファイル
 "----------------------------
@@ -179,6 +203,11 @@ NeoBundle 'tyru/caw.vim'
 " ruby・rails系
 " vim-surroundの機能を拡張 erb形式のタグを使える
 NeoBundle 'tpope/vim-rails'
+
+" markdown
+NeoBundle 'plasticboy/vim-markdown'
+NeoBundle 'kannokanno/previm'
+NeoBundle 'tyru/open-browser.vim'
 
 call neobundle#end()
 
