@@ -4,6 +4,7 @@
 syntax on
 set number
 set expandtab
+set colorcolumn=80
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
@@ -19,8 +20,9 @@ set list
 set listchars=tab:>-,trail:Ω
 set wrapscan
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
-set scrolloff=3
+set scrolloff=10
 set hlsearch
+set clipboard=unnamed
 "---------------------------
 " markdown
 "---------------------------
@@ -58,6 +60,49 @@ cnoremap <C-p> <Up>
 cnoremap <M-b> <S-Left>
 " 次の単語へ移動
 cnoremap <M-f> <S-Right>
+"---------------------------
+" バッファ　キーマップ変更
+"---------------------------
+nnoremap <silent>ls :ls<CR>
+nnoremap <silent>bp :bprevious<CR>
+nnoremap <silent>bn :bnext<CR>
+nnoremap <silent>bb :b#<CR>
+nnoremap <silent>bf :bf<CR>
+nnoremap <silent>bl :bl<CR>
+nnoremap <silent>bm :bm<CR>
+nnoremap <silent>bd :bdelete<CR>
+"---------------------------
+" 挿入モード時、ステータスラインの色を変更
+"---------------------------
+let g:hi_insert = 'highlight StatusLine guifg=darkblue guibg=darkyellow gui=none ctermfg=blue ctermbg=yellow cterm=none'
+
+if has('syntax')
+  augroup InsertHook
+    autocmd!
+    autocmd InsertEnter * call s:StatusLine('Enter')
+    autocmd InsertLeave * call s:StatusLine('Leave')
+  augroup END
+endif
+
+let s:slhlcmd = ''
+function! s:StatusLine(mode)
+  if a:mode == 'Enter'
+    silent! let s:slhlcmd = 'highlight ' . s:GetHighlight('StatusLine')
+    silent exec g:hi_insert
+  else
+    highlight clear StatusLine
+    silent exec s:slhlcmd
+  endif
+endfunction
+
+function! s:GetHighlight(hi)
+  redir => hl
+  exec 'highlight '.a:hi
+  redir END
+  let hl = substitute(hl, '[\r\n]', '', 'g')
+  let hl = substitute(hl, 'xxx', '', '')
+  return hl
+endfunction
 "----------------------------
 "要らないファイル
 "----------------------------
@@ -200,7 +245,15 @@ NeoBundle 'scrooloose/syntastic'
 " コメントアウトをトグルできる
 NeoBundle 'tyru/caw.vim'
 
+" コメントON/OFFを手軽に実行
+NeoBundle 'tomtom/tcomment_vim'
+
 " ruby・rails系
+" Rails向けのコマンドを提供する
+NeoBundle 'tpope/vim-rails'
+" Ruby向けにendを自動挿入してくれる
+NeoBundle 'tpope/vim-endwise'
+
 " vim-surroundの機能を拡張 erb形式のタグを使える
 NeoBundle 'tpope/vim-rails'
 
@@ -208,6 +261,9 @@ NeoBundle 'tpope/vim-rails'
 NeoBundle 'plasticboy/vim-markdown'
 NeoBundle 'kannokanno/previm'
 NeoBundle 'tyru/open-browser.vim'
+
+" 検索効率化
+NeoBundle "ctrlpvim/ctrlp.vim"
 
 call neobundle#end()
 
