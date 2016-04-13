@@ -22,7 +22,7 @@ set wrapscan
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 set scrolloff=10
 set hlsearch
-set clipboard=unnamed
+set clipboard+=unnamed
 "---------------------------
 " markdown
 "---------------------------
@@ -31,15 +31,17 @@ au BufRead,BufNewFile *.md set filetype=markdown
 "インサートモードキーマップ
 "---------------------------
 "insert mode時，c-aで行頭に移動
-imap <c-a> <home>
+inoremap <c-a> <home>
+"insert mode時，c-eで行末に移動
+inoremap <c-e> <End>
 "insert mode時，c-dでDelete
-imap <c-d> <del>
+inoremap <c-d> <del>
 "insert mode時，c-kでkill(カーソルから行末まで削除し，クリップボードに貼る)
-imap <c-k> <esc>lc$
+inoremap <c-k> <esc>lc$
 "insert mode時，c-fでカーソルを右に移動させる
-imap <c-f> <right>
+inoremap <c-f> <right>
 "insert mode時，c-bでカーソルを左に移動させる
-imap <c-b> <left>
+inoremap <c-b> <left>
 "---------------------------
 "コマンドラインモードキーマップ
 "---------------------------
@@ -71,6 +73,15 @@ nnoremap <silent>bf :bf<CR>
 nnoremap <silent>bl :bl<CR>
 nnoremap <silent>bm :bm<CR>
 nnoremap <silent>bd :bdelete<CR>
+"---------------------------
+" YankRound.vimキーマップ
+"---------------------------
+nmap p <Plug>(yankround-p)
+nmap P <Plug>(yankround-P)
+nmap gp <Plug>(yankround-gp)
+nmap gP <Plug>(yankround-gP)
+nmap <C-i> <Plug>(yankround-prev)
+nmap <C-n> <Plug>(yankround-next)
 "---------------------------
 " 挿入モード時、ステータスラインの色を変更
 "---------------------------
@@ -121,7 +132,7 @@ colorscheme summerfruit256
 "-------------------------
 "NERDTreeToggleのショートカット変更
 "-------------------------
-nnoremap <silent><C-e> :NERDTreeToggle<CR>
+nnoremap <silent><Space>e :NERDTreeToggle<CR>
 "------------------------
 "vim-indent-guides 自動起動
 "------------------------
@@ -264,6 +275,12 @@ NeoBundle 'tyru/open-browser.vim'
 
 " 検索効率化
 NeoBundle "ctrlpvim/ctrlp.vim"
+
+" slimシンタックスハイライト
+NeoBundle "slim-template/vim-slim"
+
+" ヤンクの履歴を管理
+NeoBundle 'LeafCage/yankround.vim'
 
 call neobundle#end()
 
