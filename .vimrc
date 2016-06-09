@@ -282,6 +282,9 @@ NeoBundle "slim-template/vim-slim"
 " ヤンクの履歴を管理
 NeoBundle 'LeafCage/yankround.vim'
 
+" coffeescriptシンタックスハイライト                                               
+NeoBundle 'kchmck/vim-coffee-script' 
+
 call neobundle#end()
 
 " Required:
