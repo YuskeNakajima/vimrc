@@ -4,7 +4,7 @@
 syntax on
 set number
 set expandtab
-set colorcolumn=80
+set colorcolumn=120
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
