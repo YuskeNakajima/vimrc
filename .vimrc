@@ -128,7 +128,7 @@ set undodir=~/.vim/tmp
 "** カラースキーマ設定 **
 "----------------------------
 set t_Co=256
-colorscheme summerfruit256
+colorscheme twilight
 "-------------------------
 "NERDTreeToggleのショートカット変更
 "-------------------------
